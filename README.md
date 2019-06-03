@@ -8,6 +8,6 @@ A Sketch plugin to create multiple layer styles or text styles, based on an exis
 
 Select your layer/s that contain the style you want to duplicate, then run the plugin.
 
-You can select layers styles and text styles at the same time.
+You can select layer styles and text styles at the same time.
 
 ![Create-new-styles](https://github.com/franklymrshankly/Create-New-Styles/blob/master/assets/createnewstyles.gif)
