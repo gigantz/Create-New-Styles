@@ -53,7 +53,7 @@ export default function() {
     var selectedStyleName = regex_hasNameAndNumber.exec(styleName);
     var partialStyleName = styleName.match(regex_partialName)[0];
     var newStyleName = null;
-    var biggestNumber = 1;
+    var biggestNumber = 0;
     var numbers = [];
 
     documentStyles.forEach(el => {
@@ -79,18 +79,8 @@ export default function() {
       };
     }
 
-    if (item.sharedStyleId) {
-      newStyleName =
-        partialStyleName +
-        " " +
-        (biggestNumber + styles[partialStyleName].count);
-    } else {
-      var num = " " + styles[partialStyleName].count;
-      if (styles[partialStyleName].count < 2) {
-        num = "";
-      }
-      newStyleName = partialStyleName + " " + "Style" + num;
-    }
+    newStyleName =
+      partialStyleName + " " + (biggestNumber + styles[partialStyleName].count);
 
     const newSharedStyle = SharedStyle.fromStyle({
       name: newStyleName,
