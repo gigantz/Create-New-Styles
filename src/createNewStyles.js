@@ -10,7 +10,6 @@ export default function() {
   var documentStyles = [];
   var regex_hasNameAndNumber = /(.*)\s(\d+)$|(.*)/;
   var regex_partialName = /^(.*(?=\s\d)|.*)/g;
-  var sharedStyle = null;
   var documentTextStyles = [];
   var documentLayerStyles = [];
 
@@ -29,21 +28,28 @@ export default function() {
   var styles = {};
 
   selectedLayers.forEach(item => {
-    if (!item.sharedStyleId) {
-      return;
-    }
-
-    if (item.style.styleType === "Text") {
-      sharedStyle = document.getSharedTextStyleWithID(item.sharedStyleId);
+    if (item.style.styleType === "Text" && item.sharedStyleId) {
+      var styleName = document.getSharedTextStyleWithID(item.sharedStyleId)
+        .name;
       documentStyles = documentTextStyles;
     }
 
-    if (item.style.styleType === "Layer") {
-      sharedStyle = document.getSharedLayerStyleWithID(item.sharedStyleId);
+    if (item.style.styleType === "Text" && !item.sharedStyleId) {
+      var styleName = item.name;
+      documentStyles = documentTextStyles;
+    }
+
+    if (item.style.styleType === "Layer" && item.sharedStyleId) {
+      var styleName = document.getSharedLayerStyleWithID(item.sharedStyleId)
+        .name;
       documentStyles = documentLayerStyles;
     }
 
-    var styleName = sharedStyle.name;
+    if (item.style.styleType === "Layer" && !item.sharedStyleId) {
+      var styleName = item.name;
+      documentStyles = documentLayerStyles;
+    }
+
     var selectedStyleName = regex_hasNameAndNumber.exec(styleName);
     var partialStyleName = styleName.match(regex_partialName)[0];
     var newStyleName = null;
@@ -73,8 +79,14 @@ export default function() {
       };
     }
 
-    newStyleName =
-      partialStyleName + " " + (biggestNumber + styles[partialStyleName].count);
+    if (item.sharedStyleId) {
+      newStyleName =
+        partialStyleName +
+        " " +
+        (biggestNumber + styles[partialStyleName].count);
+    } else {
+      newStyleName = partialStyleName + " " + "Style";
+    }
 
     const newSharedStyle = SharedStyle.fromStyle({
       name: newStyleName,

@@ -1,6 +1,6 @@
 {
   "name": "Create New Styles",
-  "description": "Create columns or gutters as layers. Useful if you need a grid on a component level",
+  "description": "A Sketch plugin to create multiple layer styles or text styles",
   "version": "0.1.0",
   "author": "Jonathan Tran",
   "compatibleVersion": 3,
