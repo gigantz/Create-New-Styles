@@ -178,7 +178,13 @@ var UI = __webpack_require__(/*! sketch/ui */ "sketch/ui");
     if (item.sharedStyleId) {
       newStyleName = partialStyleName + " " + (biggestNumber + styles[partialStyleName].count);
     } else {
-      newStyleName = partialStyleName + " " + "Style";
+      var num = " " + styles[partialStyleName].count;
+
+      if (styles[partialStyleName].count < 2) {
+        num = "";
+      }
+
+      newStyleName = partialStyleName + " " + "Style" + num;
     }
 
     var newSharedStyle = SharedStyle.fromStyle({

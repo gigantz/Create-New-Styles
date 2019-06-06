@@ -85,7 +85,11 @@ export default function() {
         " " +
         (biggestNumber + styles[partialStyleName].count);
     } else {
-      newStyleName = partialStyleName + " " + "Style";
+      var num = " " + styles[partialStyleName].count;
+      if (styles[partialStyleName].count < 2) {
+        num = "";
+      }
+      newStyleName = partialStyleName + " " + "Style" + num;
     }
 
     const newSharedStyle = SharedStyle.fromStyle({
