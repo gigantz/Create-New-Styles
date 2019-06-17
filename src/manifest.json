@@ -1,6 +1,7 @@
 {
   "name": "Create New Styles",
   "description": "A Sketch plugin to create multiple layer styles or text styles",
+  "homepage": "https://github.com/franklymrshankly/Create-New-Styles",
   "version": "0.2.2",
   "author": "Jonathan Tran",
   "compatibleVersion": 3,
