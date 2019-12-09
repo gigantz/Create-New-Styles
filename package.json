@@ -24,5 +24,8 @@
   "devDependencies": {
     "@skpm/builder": "^0.7.0"
   },
-  "author": "Jonathan Tran"
+  "author": "Jonathan Tran",
+  "dependencies": {
+    "serialize-javascript": "^2.1.2"
+  }
 }
