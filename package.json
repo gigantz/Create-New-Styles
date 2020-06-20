@@ -1,7 +1,7 @@
 {
   "name": "create-new-styles",
   "description": "A Sketch plugin to create multiple layer styles or text styles",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "engines": {
     "sketch": ">=49.0"
   },
